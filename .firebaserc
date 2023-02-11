@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "includo-a8fef": {
+      "hosting": {
+        "app": [
+          "includo-a8fef"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "includo-a8fef"
+  }
+}
