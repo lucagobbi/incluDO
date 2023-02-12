@@ -15,6 +15,11 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'create-offer/:type',
+    loadChildren: () => import('./pages/offers/create-offer/create-offer.module').then( m => m.CreateOfferPageModule),
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({

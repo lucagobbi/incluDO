@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons>
+      <ion-button (click)="back()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Crea {{type}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scroll-y="false">
+
+  <div class="pt-4 px-2">
+    <form class="flex flex-col" [formGroup]="form" (submit)="create()">
+      <label class="label pl-4">
+        <span class="label-text">Titolo</span>
+      </label>
+      <input type="text" placeholder="Titolo" class="input w-full" formControlName="title"/>
+      <label class="label pl-4">
+        <span class="label-text">Descrizione</span>
+      </label>
+      <input type="text" placeholder="Descrizione" class="input w-full" formControlName="description"/>
+      <label class="label pl-4">
+        <span class="label-text">Competenze richieste</span>
+      </label>
+      <div class="flex items-center">
+        <input type="text" placeholder="Competenza" class="input w-full" formControlName="skill"/>
+        <div class="mr-6" *ngIf="form.get('skill')?.dirty">
+          <ion-icon name="add" (click)="addSkill()"></ion-icon>
+        </div>
+      </div>
+      <input type="submit" value="Crea" class="btn btn-wide border-0 bg-includo-sky self-center mt-2 fixed bottom-5">
+    </form>
+
+    <div class="px-2">
+      <ion-chip *ngFor="let skill of skills; let i = index">
+        <ion-label>{{skill}}</ion-label>
+        <ion-icon name="close" (click)="removeSkill(i)"></ion-icon>
+      </ion-chip>
+    </div>
+  </div>
+
+</ion-content>
