@@ -1,29 +1,29 @@
 <ion-content scroll-y="false">
 
   <div class="w-screen h-1/6 pt-6">
-    <img src="assets/svg/logo-no-bg-blue.svg" width="130" height="130">
+    <img src="assets/svg/logo-no-bg-blue.svg" width="140" height="140">
   </div>
 
-  <div class="h-5/6 flex flex-col items-center p-16">
+  <div class="h-4/6 flex flex-col items-center py-16">
 
     <p class="text-2xl text-includo-sky font-bold text-center">Accedi</p>
 
-    <form class="flex flex-col items-center" [formGroup]="credentials" (submit)="signIn()">
-      <input type="email" placeholder="Email" class="input w-11/12 my-5"
+    <form class="w-full flex flex-col items-center px-12" [formGroup]="credentials" (submit)="signIn()">
+      <input type="email" placeholder="Email" class="input w-full my-5"
              formControlName="email"/>
 
-      <input type="password" placeholder="Password" class="input w-11/12"
+      <input type="password" placeholder="Password" class="input w-full"
               formControlName="password"/>
 
-      <input type="submit" value="Accedi" class="btn btn-outline btn-sm text-includo-sky mt-4">
+      <input type="submit" value="Accedi" class="btn btn-outline btn-sm text-includo-sky mt-6">
     </form>
 
     <a class="my-8 text-includo-sky">Non sei iscritto?</a>
 
-    <div class="mt-4 flex justify-center gap-6">
-      <img (click)="signInWithGoogle()" src="assets/svg/google.svg" width="25" height="25">
-      <img src="assets/svg/facebook.svg" width="28" height="28">
-      <img src="assets/svg/twitter.svg" width="28" height="28">
+    <div class="mt-5 flex justify-center gap-7">
+      <img (click)="signInWithGoogle()" src="assets/svg/google.svg" width="27" height="27">
+      <img src="assets/svg/facebook.svg" width="30" height="30">
+      <img src="assets/svg/twitter.svg" width="30" height="30">
     </div>
 
   </div>
