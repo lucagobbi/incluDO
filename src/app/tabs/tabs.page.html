@@ -1,9 +1,24 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>tabs</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-tabs (ionTabsDidChange)="setCurrentTab($event)">
+  <ion-tab-bar slot="bottom" mode="ios">
+    <ion-tab-button tab="dashboard">
+      <ion-icon
+        [name]="currentTab === 'dashboard' ? 'home' : 'home-outline'"
+        color="light">
+      </ion-icon>
+    </ion-tab-button>
 
-<ion-content>
+    <ion-tab-button tab="offers">
+      <ion-icon
+        [name]="currentTab === 'offers' ? 'rocket' : 'rocket-outline'"
+        color="light">
+      </ion-icon>
+    </ion-tab-button>
 
-</ion-content>
+    <ion-tab-button tab="curriculum">
+      <ion-icon [name]="currentTab === 'curriculum' ? 'document-text' : 'document-text-outline'"
+        color="light">
+      </ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>

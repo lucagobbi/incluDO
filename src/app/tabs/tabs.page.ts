@@ -5,11 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './tabs.page.html',
   styleUrls: ['./tabs.page.scss'],
 })
-export class TabsPage implements OnInit {
+export class TabsPage {
 
-  constructor() { }
+  currentTab = 'home';
+  constructor() {}
 
-  ngOnInit() {
+  setCurrentTab(tabEvent: any) {
+    this.currentTab = tabEvent.tab;
   }
 
 }

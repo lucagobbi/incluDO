@@ -1,3 +1,31 @@
-<ion-content scrollY="false">
-  <img src="assets/svg/logo-color.svg">
+<ion-content scroll-y="false">
+
+  <div class="w-screen h-1/6 pt-6">
+    <img src="assets/svg/logo-no-bg-blue.svg" width="130" height="130">
+  </div>
+
+  <div class="h-5/6 flex flex-col items-center p-16">
+
+    <p class="text-2xl text-includo-sky font-bold text-center">Accedi</p>
+
+    <form class="flex flex-col items-center" [formGroup]="credentials" (submit)="signIn()">
+      <input type="email" placeholder="Email" class="input w-11/12 my-5"
+             formControlName="email"/>
+
+      <input type="password" placeholder="Password" class="input w-11/12"
+              formControlName="password"/>
+
+      <input type="submit" value="Accedi" class="btn btn-outline btn-sm text-includo-sky mt-4">
+    </form>
+
+    <a class="my-8 text-includo-sky">Non sei iscritto?</a>
+
+    <div class="mt-4 flex justify-center gap-6">
+      <img (click)="signInWithGoogle()" src="assets/svg/google.svg" width="25" height="25">
+      <img src="assets/svg/facebook.svg" width="28" height="28">
+      <img src="assets/svg/twitter.svg" width="28" height="28">
+    </div>
+
+  </div>
+
 </ion-content>

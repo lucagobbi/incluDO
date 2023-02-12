@@ -17,7 +17,10 @@ import {connectFunctionsEmulator, getFunctions, provideFunctions} from "@angular
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({
+      scrollAssist: false,
+      scrollPadding: false
+    }),
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => {
