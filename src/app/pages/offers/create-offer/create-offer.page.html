@@ -11,22 +11,22 @@
 
 <ion-content scroll-y="false">
 
-  <div class="pt-4 px-2">
+  <div class="pt-4 px-1">
     <form class="flex flex-col" [formGroup]="form" (submit)="create()">
-      <label class="label pl-4">
+      <label class="label font-bold pl-4">
         <span class="label-text">Titolo</span>
       </label>
       <input type="text" placeholder="Titolo" class="input w-full" formControlName="title"/>
-      <label class="label pl-4">
+      <label class="label font-bold pl-4">
         <span class="label-text">Descrizione</span>
       </label>
       <input type="text" placeholder="Descrizione" class="input w-full" formControlName="description"/>
-      <label class="label pl-4">
+      <label class="label font-bold pl-4">
         <span class="label-text">Competenze richieste</span>
       </label>
       <div class="flex items-center">
         <input type="text" placeholder="Competenza" class="input w-full" formControlName="skill"/>
-        <div class="mr-6" *ngIf="form.get('skill')?.dirty">
+        <div class="mr-6" *ngIf="form.get('skill')?.dirty && form.get('skill')?.value">
           <ion-icon name="add" (click)="addSkill()"></ion-icon>
         </div>
       </div>
@@ -34,9 +34,10 @@
     </form>
 
     <div class="px-2">
-      <ion-chip *ngFor="let skill of skills; let i = index">
-        <ion-label>{{skill}}</ion-label>
-        <ion-icon name="close" (click)="removeSkill(i)"></ion-icon>
+      <ion-chip @fadeRegular *ngFor="let skill of skills; let i = index"
+                (click)="toggle(i)">
+        <ion-label>{{skill.skill}}</ion-label>
+        <ion-icon @fadeFast *ngIf="skill.selected" name="close" (click)="removeSkill(i)"></ion-icon>
       </ion-chip>
     </div>
   </div>

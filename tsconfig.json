@@ -18,12 +18,18 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
+    "allowJs": true,
     "lib": [
-      "es2018", 
+      "es2018",
       "dom"
     ],
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
   },
+  "typeRoots": [
+    "../node_modules/@types/"
+  ],
+  "noImplicitAny": false,
+  "include": ["**/*.ts", "test"],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

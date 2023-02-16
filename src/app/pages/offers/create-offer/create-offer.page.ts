@@ -1,20 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {NavController, ToastController} from "@ionic/angular";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {OfferService} from "../../../services/offer.service";
 import {IOffer} from "../../../models/IOffer";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-create-offer',
   templateUrl: './create-offer.page.html',
   styleUrls: ['./create-offer.page.scss'],
+  animations: [
+    trigger('fadeRegular', [
+      state('void', style({opacity: 0, transform: 'scale(0.25)'})),
+      transition('void <=> *', [
+        animate(125)
+      ]),
+    ]),
+    trigger('fadeFast', [
+      state('void', style({opacity: 0, transform: 'scale(0.25)'})),
+      transition('void <=> *', [
+        animate(70)
+      ]),
+    ]),
+  ]
 })
 export class CreateOfferPage implements OnInit {
 
   form!: FormGroup;
   type: string | null | undefined;
-  skills: string[] = [];
+  skills: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -40,12 +55,16 @@ export class CreateOfferPage implements OnInit {
   }
 
   addSkill() {
-    this.skills.push(this.form.get('skill')?.value);
+    this.skills.push({skill: this.form.get('skill')?.value, selected: false});
     this.form.get('skill')?.reset();
   }
 
   removeSkill(index: number) {
     this.skills.splice(index, 1);
+  }
+
+  toggle(index: number) {
+    this.skills[index].selected = !this.skills[index].selected;
   }
 
   create() {

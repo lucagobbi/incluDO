@@ -12,11 +12,13 @@ import {provideAuth, getAuth, connectAuthEmulator} from '@angular/fire/auth';
 import {provideFirestore, getFirestore, connectFirestoreEmulator} from '@angular/fire/firestore';
 import {provideStorage, getStorage, connectStorageEmulator} from '@angular/fire/storage';
 import {connectFunctionsEmulator, getFunctions, provideFunctions} from "@angular/fire/functions";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     IonicModule.forRoot({
       scrollAssist: false,
       scrollPadding: false
