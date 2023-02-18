@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../../services/auth.service";
+import {AuthService} from "../../services/auth/auth.service";
 import {ActionSheetController} from "@ionic/angular";
 import {Router} from "@angular/router";
-import {OfferService} from "../../services/offer.service";
+import {OfferService} from "../../services/offer/offer.service";
 import {Observable} from "rxjs";
+import {IOffer} from "../../models/IOffer";
 
 @Component({
   selector: 'app-offers',
@@ -12,7 +13,7 @@ import {Observable} from "rxjs";
 })
 export class OffersPage implements OnInit {
 
-  offers!: Observable<any>;
+  offers!: Observable<IOffer[]>;
 
   constructor(
     public authService: AuthService,
@@ -53,6 +54,10 @@ export class OffersPage implements OnInit {
     if(data?.type) {
       this.router.navigate(['/create-offer', data.type]);
     }
+  }
+
+  goToDetails(offerId: string | undefined) {
+    this.router.navigateByUrl(`/offer/${offerId}`);
   }
 
 }

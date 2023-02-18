@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {NavController, ToastController} from "@ionic/angular";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {OfferService} from "../../../services/offer.service";
+import {OfferService} from "../../../services/offer/offer.service";
 import {IOffer} from "../../../models/IOffer";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 
@@ -71,7 +71,7 @@ export class CreateOfferPage implements OnInit {
     const offer: IOffer = {
       title: this.form.get('title')?.value,
       description: this.form.get('description')?.value,
-      skills: this.skills
+      skills: this.skills.map(s => s.skill)
     };
     this.offerService.createOffer(offer).then(async () => {
       const toast = await this.toastController.create({

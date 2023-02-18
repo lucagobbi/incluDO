@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{offer.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" scrollY="false">
+
+  <div class="flex flex-col gap-2 justify-center p-2">
+
+    <p class="font-bold">Titolo</p>
+
+    <p>{{offer.title}}</p>
+
+    <div class="divider"></div>
+
+    <p class="font-bold">Descrizione</p>
+
+    <p>{{offer.description}}</p>
+
+    <div class="divider"></div>
+
+    <div>
+      <p class="font-bold">Competenze Richieste</p>
+      <br>
+      <ion-chip *ngFor="let skill of offer.skills">
+        {{skill}}
+      </ion-chip>
+    </div>
+
+    <div class="divider"></div>
+
+    <button class="btn btn-wide border-0 bg-includo-sky self-center mt-2 fixed bottom-5">Candidati</button>
+  </div>
+
+</ion-content>
