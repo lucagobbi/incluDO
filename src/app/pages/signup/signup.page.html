@@ -1,7 +1,38 @@
-<ion-content>
+<ion-content scroll-y="false">
 
-  <div>
+  <div class="w-screen h-1/6 pt-6">
+    <img src="assets/svg/logo-no-bg-blue.svg" width="150" height="150">
+  </div>
+
+  <div class="h-4/6 flex flex-col items-center py-12">
+
+    <p class="text-3xl text-includo-sky font-bold text-center my-8">Registrati</p>
+
+    <form class="w-full flex flex-col items-center px-12"  [formGroup]="form" (submit)="signUp()">
+
+      <input type="email" placeholder="Email" class="input w-full"
+             formControlName="email"/>
+
+      <p *ngIf="submitting && email?.errors" class="text-red-500 text-sm">Errore mail</p>
+
+      <input type="password" placeholder="Password" class="input w-full my-5"
+             formControlName="password"/>
+
+      <p *ngIf="submitting && password?.errors" class="text-red-500 text-sm">Errore password</p>
+
+      <input type="password" placeholder="Ripeti la password" class="input w-full"
+             formControlName="repeatPassword"/>
+
+      <p *ngIf="(submitting && repeatPassword?.errors) || (password?.dirty && repeatPassword?.dirty && password?.value !== repeatPassword?.value)" class="text-red-500 text-sm">Le password non corrispondono</p>
+
+      <input type="submit" value="Registrati" class="btn btn-outline btn-sm text-includo-sky mt-6">
+
+    </form>
+
+    <a class="my-12 text-includo-sky" routerLink="/login">Hai già un account?</a>
+
 
   </div>
+
 
 </ion-content>

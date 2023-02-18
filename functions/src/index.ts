@@ -4,12 +4,6 @@ import * as admin from "firebase-admin";
 admin.initializeApp();
 const db = admin.firestore();
 
-export const firstAdmin = functions.auth.user().onCreate((user) => {
-  if(user.email == 'lucasghegobbi@gmail.com') {
-    admin.auth().setCustomUserClaims(user.uid, {admin: true});
-  }
-});
-
 export const addUser = functions.https.onCall(async (data, context) => {
   if (context.auth && context.auth?.uid) {
     const user = await db.collection('/users').doc(context.auth.uid).get();
