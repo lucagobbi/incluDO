@@ -12,6 +12,10 @@ const routes: Routes = [
     canActivate: [AutoLoginGuard]
   },
   {
+    path: 'signup',
+    loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
+  },
+  {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule),
     canActivate: [AuthGuard]
