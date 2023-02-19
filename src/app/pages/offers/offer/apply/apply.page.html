@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Candidati</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="flex flex-col">
+
+    <form [formGroup]="form">
+
+      <label class="label font-bold pl-4">
+        <span class="label-text">Nome e Cognome</span>
+      </label>
+      <input type="text" placeholder="Nome e Cognome" class="input w-full" formControlName="fullName"/>
+
+      <label class="label font-bold pl-4">
+        <span class="label-text">Email</span>
+      </label>
+      <input type="text" placeholder="Email" class="input w-full" formControlName="email"/>
+
+      <label class="label font-bold pl-4">
+        <span class="label-text">Curriculum</span>
+      </label>
+      <input type="file" class="input w-full" formControlName="cv"/>
+
+    </form>
+
+    <button class="btn btn-wide border-0 bg-includo-sky self-center mt-2 fixed bottom-5" (click)="apply()">Invia</button>
+
+  </div>
+
+</ion-content>

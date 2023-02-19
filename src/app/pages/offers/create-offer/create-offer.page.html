@@ -9,37 +9,71 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content scroll-y="false">
+<ion-content>
 
-  <div class="pt-4 px-1">
+  <div class="pt-4">
     <form class="flex flex-col" [formGroup]="form" (submit)="create()">
-      <label class="label font-bold pl-4">
-        <span class="label-text">Titolo</span>
-      </label>
-      <input type="text" placeholder="Titolo" class="input w-full" formControlName="title"/>
-      <label class="label font-bold pl-4">
-        <span class="label-text">Descrizione</span>
-      </label>
-      <input type="text" placeholder="Descrizione" class="input w-full" formControlName="description"/>
-      <label class="label font-bold pl-4">
-        <span class="label-text">Competenze richieste</span>
-      </label>
-      <div class="flex items-center">
-        <input type="text" placeholder="Competenza" class="input w-full" formControlName="skill"/>
-        <div class="mr-6" *ngIf="form.get('skill')?.dirty && form.get('skill')?.value">
-          <ion-icon name="add" (click)="addSkill()"></ion-icon>
-        </div>
-      </div>
-      <input type="submit" value="Crea" class="btn btn-wide border-0 bg-includo-sky self-center mt-2 fixed bottom-5">
+
+      <ion-accordion-group expand="inset">
+        <ion-accordion value="first">
+          <ion-item slot="header" color="light">
+            <ion-label>Posizione</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <label class="label font-bold pl-4">
+              <span class="label-text">Titolo</span>
+            </label>
+            <input type="text" placeholder="Titolo" class="input w-full" formControlName="title"/>
+            <label class="label font-bold pl-4">
+              <span class="label-text">Descrizione</span>
+            </label>
+            <textarea class="textarea input w-full" formControlName="description" placeholder="Descrizione"></textarea>
+            <label class="label font-bold pl-4">
+              <span class="label-text">Competenze richieste</span>
+            </label>
+            <div class="flex items-center">
+              <input type="text" placeholder="Competenza" class="input w-full" formControlName="skill"/>
+              <div class="mr-6" *ngIf="form.get('skill')?.dirty && form.get('skill')?.value">
+                <ion-icon name="add" (click)="addSkill()"></ion-icon>
+              </div>
+            </div>
+            <div class="px-2">
+              <ion-chip @zoomInRegular *ngFor="let skill of skills; let i = index"
+                        (click)="toggle(i)">
+                <ion-label>{{skill.skill}}</ion-label>
+                <ion-icon @zoomInFast *ngIf="skill.selected" name="close" (click)="removeSkill(i)"></ion-icon>
+              </ion-chip>
+            </div>
+          </div>
+        </ion-accordion>
+        <ion-accordion value="second">
+          <ion-item slot="header" color="light">
+            <ion-label>Informazioni Aziendali</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <label class="label font-bold pl-4">
+              <span class="label-text">Azienda</span>
+            </label>
+            <input type="text" placeholder="Azienda" class="input w-full" formControlName="companyName"/>
+            <label class="label font-bold pl-4">
+              <span class="label-text">Indirizzo</span>
+            </label>
+            <input type="text" placeholder="Indirizzo" class="input w-full" formControlName="companyAddress"/>
+            <label class="label font-bold pl-4">
+              <span class="label-text">Numero di telefono</span>
+            </label>
+            <input type="text" placeholder="Numero di telefono" class="input w-full" formControlName="companyPhone"/>
+            <label class="label font-bold pl-4">
+              <span class="label-text">Email</span>
+            </label>
+            <input type="text" placeholder="Email" class="input w-full" formControlName="companyEmail"/>
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+
+      <input [disabled]="form.invalid" type="submit" value="Crea" class="btn btn-wide border-0 bg-includo-sky self-center mt-2 fixed bottom-5">
     </form>
 
-    <div class="px-2">
-      <ion-chip @zoomInRegular *ngFor="let skill of skills; let i = index"
-                (click)="toggle(i)">
-        <ion-label>{{skill.skill}}</ion-label>
-        <ion-icon @zoomInFast *ngIf="skill.selected" name="close" (click)="removeSkill(i)"></ion-icon>
-      </ion-chip>
-    </div>
   </div>
 
 </ion-content>

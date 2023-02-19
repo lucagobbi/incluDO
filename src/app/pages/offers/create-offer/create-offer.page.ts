@@ -36,7 +36,11 @@ export class CreateOfferPage implements OnInit {
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
       skill: [''],
-      skills: [null, [Validators.required]],
+      skills: [null],
+      companyName: ['', Validators.required],
+      companyAddress: ['', Validators.required],
+      companyPhone: ['', Validators.required],
+      companyEmail: ['', Validators.required, Validators.email],
     });
   }
 
@@ -61,7 +65,13 @@ export class CreateOfferPage implements OnInit {
     const offer: IOffer = {
       title: this.form.get('title')?.value,
       description: this.form.get('description')?.value,
-      skills: this.skills.map(s => s.skill)
+      skills: this.skills.map(s => s.skill),
+      company: {
+        name: this.form.get('companyName')?.value,
+        address: this.form.get('companyAddress')?.value,
+        phone: this.form.get('companyPhone')?.value,
+        email: this.form.get('companyEmail')?.value,
+      }
     };
     this.offerService.createOffer(offer).then(async () => {
       const toast = await this.toastController.create({

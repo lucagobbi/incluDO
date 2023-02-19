@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ModalController, NavController} from "@ionic/angular";
+import {NavController} from "@ionic/angular";
 import {IOffer} from "../../../models/IOffer";
-import {ActivatedRoute} from "@angular/router";
-import {ApplyModalComponent} from "./apply-modal/apply-modal.component";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-offer',
@@ -15,9 +14,8 @@ export class OfferPage implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private navController: NavController,
-    private modalController: ModalController,
-
   ) { }
 
   ngOnInit() {
@@ -28,12 +26,12 @@ export class OfferPage implements OnInit {
     this.navController.back();
   }
 
-  async apply() {
-    const modal = await this.modalController.create({
-      component: ApplyModalComponent,
-    });
-    modal.present();
-    const { data, role } = await modal.onWillDismiss();
+  apply() {
+    this.navController.navigateForward(this.router.url + '/apply', {state: {offer: this.offer}});
+  }
+
+  callCompany() {
+    document.getElementById('company')?.click();
   }
 
 }

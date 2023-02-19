@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding" scrollY="false">
+<ion-content class="ion-padding">
 
   <div class="flex flex-col gap-2 justify-center p-2">
 
@@ -34,6 +34,18 @@
     </div>
 
     <div class="divider"></div>
+
+    <div class="flex flex-col justify-start gap-2">
+
+      <p class="font-bold">Azienda</p>
+
+      <div class="flex justify-between pr-2">
+        <p>{{offer.company?.name}}</p>
+
+        <ion-icon class="text-xl" name="call" (click)="callCompany()"></ion-icon>
+        <a [href]="'tel:'+offer.company?.phone" id="company" hidden></a>
+      </div>
+    </div>
 
     <button class="btn btn-wide border-0 bg-includo-sky self-center mt-2 fixed bottom-5" (click)="apply()">Candidati</button>
   </div>
