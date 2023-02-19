@@ -33,6 +33,7 @@
     "@ionic/angular": "^6.1.9",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "base64-arraybuffer": "^1.0.2",
     "cordova-plugin-lottie-splashscreen": "^0.9.6",
     "daisyui": "^2.50.0",
     "firebaseui": "^6.0.2",

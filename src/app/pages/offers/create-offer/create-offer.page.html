@@ -34,10 +34,10 @@
     </form>
 
     <div class="px-2">
-      <ion-chip @fadeRegular *ngFor="let skill of skills; let i = index"
+      <ion-chip @zoomInRegular *ngFor="let skill of skills; let i = index"
                 (click)="toggle(i)">
         <ion-label>{{skill.skill}}</ion-label>
-        <ion-icon @fadeFast *ngIf="skill.selected" name="close" (click)="removeSkill(i)"></ion-icon>
+        <ion-icon @zoomInFast *ngIf="skill.selected" name="close" (click)="removeSkill(i)"></ion-icon>
       </ion-chip>
     </div>
   </div>

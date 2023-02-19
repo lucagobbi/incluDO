@@ -5,11 +5,13 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword, signInWithPopup,
   GoogleAuthProvider,
-  User, signOut
+  User, signOut, updateProfile
 } from "@angular/fire/auth";
 import {Router} from "@angular/router";
-import {doc, Firestore, serverTimestamp, setDoc} from "@angular/fire/firestore";
+import {Firestore} from "@angular/fire/firestore";
 import {LoadingController, ToastController} from "@ionic/angular";
+import {getDownloadURL, ref, Storage, uploadBytes} from "@angular/fire/storage";
+import {from, switchMap} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +26,7 @@ export class AuthService {
     public auth: Auth,
     private router: Router,
     private db: Firestore,
+    private storage: Storage,
     private loadingController: LoadingController,
     private toastController: ToastController
 
@@ -75,6 +78,25 @@ export class AuthService {
 
   signOut() {
     signOut(this.auth);
+  }
+
+  uploadImage(image: File, path: string) {
+    const storageRef = ref(this.storage, path);
+    const uploadTask = from(uploadBytes(storageRef, image));
+    return uploadTask.pipe(
+      switchMap((result: any) => getDownloadURL(result.ref))
+    );
+  }
+
+  updateProfile(file: File, userId: string | undefined) {
+    this.uploadImage(file, `images/profile/${userId}`)
+      .pipe(
+        switchMap(async (photoURL) => {
+          if (this.currentUser) {
+            await updateProfile(this.currentUser, {photoURL})
+          }
+        })
+      ).subscribe();
   }
 
 }

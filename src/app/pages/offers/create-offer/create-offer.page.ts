@@ -4,25 +4,15 @@ import {NavController, ToastController} from "@ionic/angular";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {OfferService} from "../../../services/offer/offer.service";
 import {IOffer} from "../../../models/IOffer";
-import {animate, state, style, transition, trigger} from "@angular/animations";
+import {zoomInFast, zoomInRegular} from "../../../animations/animations";
 
 @Component({
   selector: 'app-create-offer',
   templateUrl: './create-offer.page.html',
   styleUrls: ['./create-offer.page.scss'],
   animations: [
-    trigger('fadeRegular', [
-      state('void', style({opacity: 0, transform: 'scale(0.25)'})),
-      transition('void <=> *', [
-        animate(125)
-      ]),
-    ]),
-    trigger('fadeFast', [
-      state('void', style({opacity: 0, transform: 'scale(0.25)'})),
-      transition('void <=> *', [
-        animate(70)
-      ]),
-    ]),
+    zoomInRegular,
+    zoomInFast
   ]
 })
 export class CreateOfferPage implements OnInit {

@@ -8,16 +8,11 @@
     <ion-title>
       Dashboard
     </ion-title>
-    <div class="dropdown dropdown-bottom dropdown-end">
-      <label tabindex="0" class="m-1">
+    <ion-buttons slot="end">
+      <ion-button (click)="openLangSheet()">
         <span [className]="'me-2 flag-icon flag-icon-'+selectedLanguage?.iso?.toLocaleLowerCase()"></span>
-      </label>
-      <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-        <li *ngFor="let lang of languageList">
-          <span [className]="'flag-icon flag-icon-'+ lang.iso.toLocaleLowerCase()"></span> {{ lang.label }}
-        </li>
-      </ul>
-    </div>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -31,12 +26,13 @@
         <div class="w-24 rounded-full">
           <img [src]="imageURL ? imageURL : 'assets/empty/blank-profile.png' "/>
         </div>
-        <button (click)="updatePhoto()" class="absolute right-1 bottom-1 btn btn-xs btn-circle bg-includo-sky" [ngClass]="imagePreviewed ? 'bg-green-600' : ''">
+        <button (click)="choosePhoto()" class="absolute right-1 bottom-1 btn btn-xs btn-circle" [ngClass]="imagePreviewed ? 'bg-green-600' : 'bg-includo-sky'">
           <ion-icon color="light" name="pencil" *ngIf="!imagePreviewed"></ion-icon>
           <ion-icon color="light" name="checkmark" *ngIf="imagePreviewed"></ion-icon>
         </button>
       </div>
     </div>
+    <p>{{imagePreviewed}}</p>
 
     <div class="divider px-10"></div>
 
@@ -47,6 +43,16 @@
           <div class="stat-value">11</div>
         </div>
       </div>
+    </div>
+
+    <div class="dropdown dropdown-bottom dropdown-end">
+      <label tabindex="0" class="m-1">
+      </label>
+      <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+        <li *ngFor="let lang of languageList">
+          <span [className]="'flag-icon flag-icon-'+ lang.iso.toLocaleLowerCase()"></span> {{ lang.label }}
+        </li>
+      </ul>
     </div>
 
   </div>

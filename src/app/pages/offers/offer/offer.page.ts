@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {NavController} from "@ionic/angular";
+import {ModalController, NavController} from "@ionic/angular";
 import {IOffer} from "../../../models/IOffer";
 import {ActivatedRoute} from "@angular/router";
+import {ApplyModalComponent} from "./apply-modal/apply-modal.component";
 
 @Component({
   selector: 'app-offer',
@@ -15,6 +16,8 @@ export class OfferPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private navController: NavController,
+    private modalController: ModalController,
+
   ) { }
 
   ngOnInit() {
@@ -23,6 +26,14 @@ export class OfferPage implements OnInit {
 
   back() {
     this.navController.back();
+  }
+
+  async apply() {
+    const modal = await this.modalController.create({
+      component: ApplyModalComponent,
+    });
+    modal.present();
+    const { data, role } = await modal.onWillDismiss();
   }
 
 }
