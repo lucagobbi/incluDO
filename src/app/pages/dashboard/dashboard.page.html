@@ -8,6 +8,16 @@
     <ion-title>
       Dashboard
     </ion-title>
+    <div class="dropdown dropdown-bottom dropdown-end">
+      <label tabindex="0" class="m-1">
+        <span [className]="'me-2 flag-icon flag-icon-'+selectedLanguage?.iso?.toLocaleLowerCase()"></span>
+      </label>
+      <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+        <li *ngFor="let lang of languageList">
+          <span [className]="'flag-icon flag-icon-'+ lang.iso.toLocaleLowerCase()"></span> {{ lang.label }}
+        </li>
+      </ul>
+    </div>
   </ion-toolbar>
 </ion-header>
 

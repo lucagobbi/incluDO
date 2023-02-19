@@ -14,12 +14,14 @@ import {provideStorage, getStorage, connectStorageEmulator} from '@angular/fire/
 import {connectFunctionsEmulator, getFunctions, provideFunctions} from "@angular/fire/functions";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { ServiceWorkerModule } from '@angular/service-worker';
+import {NgxTranslateModule} from "./translate/translate.module";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    NgxTranslateModule,
     IonicModule.forRoot({
       scrollAssist: false,
       scrollPadding: false
