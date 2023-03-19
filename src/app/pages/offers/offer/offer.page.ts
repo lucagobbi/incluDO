@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NavController} from "@ionic/angular";
 import {IOffer} from "../../../models/IOffer";
 import {ActivatedRoute, Router} from "@angular/router";
+import {AuthService} from "../../../services/auth/auth.service";
 
 @Component({
   selector: 'app-offer',
@@ -16,6 +17,7 @@ export class OfferPage implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private navController: NavController,
+    public authService: AuthService,
   ) { }
 
   ngOnInit() {
@@ -32,6 +34,10 @@ export class OfferPage implements OnInit {
 
   callCompany() {
     document.getElementById('company')?.click();
+  }
+
+  alreadyApplied() {
+    return this.offer.applications?.some(app => app.userId === this.authService.currentUser?.uid);
   }
 
 }

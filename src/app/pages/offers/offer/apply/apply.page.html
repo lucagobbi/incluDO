@@ -25,10 +25,18 @@
       </label>
       <input type="text" placeholder="Email" class="input w-full" formControlName="email"/>
 
-      <label class="label font-bold pl-4">
-        <span class="label-text">Curriculum</span>
-      </label>
-      <input type="file" class="input w-full" formControlName="cv"/>
+      <div>
+        <label class="label font-bold pl-4">
+          <span class="label-text">Curriculum</span>
+        </label>
+        <div class="w-full flex flex-col gap-2 items-center">
+          <ion-icon name="cloud-upload-outline" size="large" *ngIf="!form.get('cv')?.dirty" (click)="uploadDoc()"></ion-icon>
+          <ion-icon name="cloud-done-outline" size="large" *ngIf="form.get('cv')?.dirty" (click)="uploadDoc()"></ion-icon>
+          <p *ngIf="form.get('cv')?.dirty">{{docName}}</p>
+          <p class="opacity-70 italic" *ngIf="!form.get('cv')?.dirty">Nessun file caricato</p>
+        </div>
+        <input type="file" id="input-cv" (change)="uploadedDoc($event)" class="input w-full" hidden/>
+      </div>
 
     </form>
 

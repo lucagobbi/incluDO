@@ -6,6 +6,7 @@ import {ILanguage} from "../../models/ILanguage";
 import languageSupported from "../../../assets/i18n/languageSupported.json";
 import {ActionSheetButton, ActionSheetController} from "@ionic/angular";
 import {decode} from "base64-arraybuffer";
+import {OfferService} from "../../services/offer/offer.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -23,6 +24,7 @@ export class DashboardPage implements OnInit {
   constructor(
     public authService: AuthService,
     private translateService: TranslateService,
+    private offerService: OfferService,
     private actionSheetController: ActionSheetController,
   ) { }
 
@@ -82,4 +84,7 @@ export class DashboardPage implements OnInit {
     });
   }
 
+  async countOffers() {
+    await this.offerService.countOffers();
+  }
 }

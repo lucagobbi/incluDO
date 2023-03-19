@@ -15,6 +15,7 @@ import {connectFunctionsEmulator, getFunctions, provideFunctions} from "@angular
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import {NgxTranslateModule} from "./translate/translate.module";
+import {LocalNotificationsWeb} from "@capacitor/local-notifications/dist/esm/web";
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +25,8 @@ import {NgxTranslateModule} from "./translate/translate.module";
     NgxTranslateModule,
     IonicModule.forRoot({
       scrollAssist: false,
-      scrollPadding: false
+      scrollPadding: false,
+      mode: 'ios'
     }),
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth/auth.service";
-import {ActionSheetController} from "@ionic/angular";
+import {ActionSheetController, GestureController, GestureDetail} from "@ionic/angular";
 import {Router} from "@angular/router";
 import {OfferService} from "../../services/offer/offer.service";
 import {Observable} from "rxjs";
@@ -11,7 +11,7 @@ import {IOffer} from "../../models/IOffer";
   templateUrl: './offers.page.html',
   styleUrls: ['./offers.page.scss'],
 })
-export class OffersPage implements OnInit {
+export class OffersPage implements OnInit, AfterViewInit {
 
   offers!: Observable<IOffer[]>;
 
@@ -19,11 +19,26 @@ export class OffersPage implements OnInit {
     public authService: AuthService,
     private router: Router,
     private actionSheetController: ActionSheetController,
-    private offerService: OfferService
+    private offerService: OfferService,
+    private gestureController: GestureController
   ) { }
 
   ngOnInit() {
     this.offers = this.offerService.getOffers();
+  }
+
+  ngAfterViewInit() {
+    const gesture = this.gestureController.create({
+      gestureName: 'create-offer',
+      el: <HTMLElement>document.getElementById('offers'),
+      threshold: 0,
+      onEnd: (detail: GestureDetail) => {
+        if (detail.deltaY < -100 && detail.velocityY < -0.15) {
+          this.add();
+        }
+      }
+    });
+    gesture.enable();
   }
 
   async add() {

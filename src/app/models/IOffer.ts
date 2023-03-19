@@ -1,4 +1,5 @@
 import {ICompany} from "./ICompany";
+import {IApplication} from "./IApplication";
 
 export interface IOffer {
   id?: string;
@@ -6,4 +7,5 @@ export interface IOffer {
   description: string;
   skills: string[];
   company?: ICompany;
+  applications?: IApplication[];
 }
