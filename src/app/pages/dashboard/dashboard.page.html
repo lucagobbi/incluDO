@@ -6,6 +6,12 @@
       </ion-button>
     </ion-buttons>
     <ion-title>Dashboard</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleChangeLang()">
+        <span [className]="'me-2 fi fi-'+selectedLanguage?.iso?.toLocaleLowerCase() + ' fis'"></span>
+        <i class="fa-solid fa-caret-down"></i>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

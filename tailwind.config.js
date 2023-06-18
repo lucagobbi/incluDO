@@ -2,7 +2,6 @@
 module.exports = {
   content: [
     "./src/**/*.{html,js}",
-    "./node_modules/tw-elements/dist/js/**/*.js"
   ],
   theme: {
     extend: {
@@ -11,7 +10,19 @@ module.exports = {
       }
     },
   },
-  plugins: [require("tw-elements/dist/plugin.cjs")],
-  darkMode: "class"
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: [
+      {
+        includo: {
+          "primary": "#00719c",
+          "secondary": "#92567C",
+          "accent": "#384955",
+          "neutral": "#9BAEBC",
+          "base-100": "#ffffff",
+        },
+      },
+    ]
+  }
 }
 

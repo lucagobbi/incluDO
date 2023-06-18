@@ -1,0 +1,8 @@
+[
+  { "code": "en", "iso": "GB", "label": "English" },
+  { "code": "it", "iso": "IT", "label": "Italian" },
+  { "code": "fr", "iso": "FR", "label": "French" },
+  { "code": "es", "iso": "ES", "label": "Spanish" },
+  { "code": "uk", "iso": "UA", "label": "Ukranian" },
+  { "code": "sq", "iso": "AL", "label": "Albanian" }
+]
