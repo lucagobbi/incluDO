@@ -1,0 +1,36 @@
+<ion-content scroll-y="false">
+
+  <div class="w-screen h-1/6 pt-6">
+    <img src="assets/svg/logo.svg" width="150" height="150">
+  </div>
+
+  <div class="md:w-3/5 md:mx-auto h-4/6 flex flex-col items-center mt-2 py-16">
+
+    <p class="text-3xl text-includo-sky font-bold text-center my-6">Accedi</p>
+
+    <form class="w-full flex flex-col items-center gap-2 px-12" [formGroup]="credentials" (submit)="signIn()">
+      <input type="email" placeholder="Email" class="input w-full my-5"
+             formControlName="email"/>
+
+      <input type="password" placeholder="Password" class="input w-full"
+             formControlName="password"/>
+
+      <button
+        type="button"
+        (click)="signIn()"
+        class="inline-block rounded bg-includo-sky px-6 pb-2 pt-2.5 mt-8 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+        Accedi
+      </button>
+    </form>
+
+    <a class="my-10 text-includo-sky" routerLink="/signup">Non sei iscritto?</a>
+
+    <div class="mt-6 flex justify-center gap-14">
+      <img (click)="signInWithGoogle()" src="assets/svg/google.svg" width="30" height="30">
+      <img src="assets/svg/facebook.svg" width="32" height="32">
+      <img src="assets/svg/twitter.svg" width="32" height="32">
+    </div>
+
+  </div>
+
+</ion-content>
