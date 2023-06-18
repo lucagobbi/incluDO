@@ -12,14 +12,14 @@
     <div class="flex items-center justify-center">
       <div class="w-1/2">
         <div class="flex justify-between">
-          <div class="step-indicator" [ngClass]="{'text-includo-sky': currentStep === 1}">Step 1</div>
+          <div class="step-indicator" [ngClass]="{'text-includo-sky': currentStep === 1}">Chi sono</div>
           <div class="step-indicator" [ngClass]="{'text-includo-sky': currentStep === 2}">Step 2</div>
           <div class="step-indicator" [ngClass]="{'text-includo-sky': currentStep === 3}">Step 3</div>
         </div>
 
         <div class="mt-8">
           <form [formGroup]="formGroup" (ngSubmit)="submitForm()">
-            <div @fadeInRegular class="step" *ngIf="currentStep === 1">
+            <div @fadeInRegular formGroupName="user" class="step" *ngIf="currentStep === 1">
               <h2 class="text-lg font-semibold mb-4">Step 1: Personal Information</h2>
               <div class="mb-4">
                 <label for="name" class="block mb-2">Name:</label>
