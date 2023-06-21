@@ -15,6 +15,29 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content class="ion-padding" [fullscreen]="true">
+
+<div class="flex flex-col items-center">
+  <div class="flex justify-between">
+    <div class="pt-8 pl-4">
+      <p class="text-lg">Bentornato Gino</p>
+    </div>
+    <div class="p-4">
+      <div class="avatar" (click)="goToProfile()">
+        <div class="w-24 rounded-full">
+          <img src="assets/icons/icon-96x96.png" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-between items-center w-11/12 rounded-md bg-gray-200 p-4">
+
+    <p>Completamento profilo</p>
+
+    <div class="radial-progress" style="--value:70;">70%</div>
+
+  </div>
+</div>
 
 </ion-content>

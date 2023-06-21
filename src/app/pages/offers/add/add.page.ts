@@ -4,14 +4,22 @@ import {NavController} from "@ionic/angular";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ToastService, ToastType} from "../../../services/toast/toast.service";
 import {OfferService} from "../../../services/offer/offer.service";
+import {Offer} from "../../../models/Offer";
+import {fadeInRegular, zoomInFast, zoomInRegular} from "../../../animations/animations";
 
 @Component({
   selector: 'app-add',
   templateUrl: './add.page.html',
   styleUrls: ['./add.page.scss'],
+  animations: [
+    zoomInFast,
+    zoomInRegular,
+    fadeInRegular,
+  ]
 })
 export class AddPage implements OnInit {
 
+  currentStep: number = 1;
   form!: FormGroup;
   type: string | null | undefined;
   skills: any[] = [];
@@ -39,6 +47,14 @@ export class AddPage implements OnInit {
     });
   }
 
+  nextStep() {
+    this.currentStep++;
+  }
+
+  previousStep() {
+    this.currentStep--;
+  }
+
   back() {
     this.navController.back();
   }
@@ -57,7 +73,7 @@ export class AddPage implements OnInit {
   }
 
   create() {
-    const offer: IOffer = {
+    const offer: Offer = {
       title: this.form.get('title')?.value,
       description: this.form.get('description')?.value,
       skills: this.skills.map(s => s.skill),

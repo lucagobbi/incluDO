@@ -3,7 +3,7 @@ import {AuthService} from "../../services/auth/auth.service";
 import {TranslateService} from "@ngx-translate/core";
 import {Language} from "../../models/Language";
 import languageSupported from "../../../assets/i18n/langSupported.json";
-import {ActionSheetButton, ActionSheetController} from "@ionic/angular";
+import {ActionSheetButton, ActionSheetController, NavController} from "@ionic/angular";
 import {fadeInRegular} from "../../animations/animations";
 
 @Component({
@@ -22,7 +22,8 @@ export class DashboardPage implements OnInit {
   constructor(
     private translateService: TranslateService,
     private authService: AuthService,
-    private actionSheetController: ActionSheetController
+    private actionSheetController: ActionSheetController,
+    private navController: NavController
   ) {
     this.translateService.use("it");
   }
@@ -65,6 +66,10 @@ export class DashboardPage implements OnInit {
 
   signOut() {
     this.authService.signOut();
+  }
+
+  goToProfile() {
+    this.navController.navigateForward('/profile');
   }
 
 }

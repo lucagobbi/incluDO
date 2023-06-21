@@ -29,20 +29,33 @@ const routes: Routes = [
   },
   {
     path: 'offers',
-    loadChildren: () => import('./pages/offers/offers.module').then( m => m.OffersPageModule)
+    loadChildren: () => import('./pages/offers/offers.module').then( m => m.OffersPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'cv',
-    loadChildren: () => import('./pages/cv/cv.module').then( m => m.CvPageModule)
+    loadChildren: () => import('./pages/cv/cv.module').then( m => m.CvPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
   },
+  {
+    path: 'add',
+    loadChildren: () => import('./pages/offers/add/add.module').then( m => m.AddPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/dashboard/profile/profile.module').then( m => m.ProfilePageModule),
+    canActivate: [AuthGuard]
+  }
 ];
 @NgModule({
   imports: [
