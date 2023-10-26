@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { initFlowbite } from 'flowbite';
 
 @Component({
@@ -7,9 +8,12 @@ import { initFlowbite } from 'flowbite';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor() { }
+  
+  constructor(
+  ) { }
 
   ngOnInit(): void {
     initFlowbite();
   }
+
 }

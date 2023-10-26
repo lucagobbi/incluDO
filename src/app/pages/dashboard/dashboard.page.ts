@@ -24,8 +24,6 @@ export class DashboardPage implements OnInit {
   currentIndex = 0;
 
   constructor(
-    private authService: AuthService,
-    private navController: NavController,
     private offerService: OfferService
   ) {
   }
@@ -50,15 +48,6 @@ export class DashboardPage implements OnInit {
     } else {
       this.currentIndex = this.offers.length - 1;
     }
-  }
-
-
-  signOut() {
-    this.authService.signOut();
-  }
-
-  goToProfile() {
-    this.navController.navigateForward('/profile');
   }
 
 }

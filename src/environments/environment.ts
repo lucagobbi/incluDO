@@ -14,7 +14,7 @@ export const environment = {
     measurementId: 'G-7WS2RL2142',
   },
   production: false,
-  useEmulators: false
+  useEmulators: true
 };
 
 /*

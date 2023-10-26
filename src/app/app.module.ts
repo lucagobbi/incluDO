@@ -17,6 +17,7 @@ import { NgxTranslateModule } from "./translate/translate.module";
 import { TitleCasePipe } from "@angular/common";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -59,7 +60,8 @@ import { ReactiveFormsModule } from '@angular/forms';
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000'
     }),
-    NgxTranslateModule
+    NgxTranslateModule,
+    SharedModule
   ],
   providers: [
     TitleCasePipe,
