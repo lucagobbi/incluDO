@@ -6,22 +6,24 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import {provideAuth, getAuth, connectAuthEmulator} from '@angular/fire/auth';
-import {provideFirestore, getFirestore, connectFirestoreEmulator} from '@angular/fire/firestore';
-import {provideFunctions, getFunctions, connectFunctionsEmulator} from '@angular/fire/functions';
-import {provideStorage, getStorage, connectStorageEmulator} from '@angular/fire/storage';
+import { provideAuth, getAuth, connectAuthEmulator } from '@angular/fire/auth';
+import { provideFirestore, getFirestore, connectFirestoreEmulator } from '@angular/fire/firestore';
+import { provideFunctions, getFunctions, connectFunctionsEmulator } from '@angular/fire/functions';
+import { provideStorage, getStorage, connectStorageEmulator } from '@angular/fire/storage';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import {NgxTranslateModule} from "./translate/translate.module";
-import {TitleCasePipe} from "@angular/common";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { NgxTranslateModule } from "./translate/translate.module";
+import { TitleCasePipe } from "@angular/common";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -34,7 +36,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     }),
     provideFirestore(() => {
       const firestore = getFirestore();
-      if(environment.useEmulators) {
+      if (environment.useEmulators) {
         connectFirestoreEmulator(firestore, 'localhost', 8080);
       }
       return firestore;
@@ -65,4 +67,4 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

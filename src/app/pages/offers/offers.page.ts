@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../../services/auth/auth.service";
-import {NavController} from "@ionic/angular";
+import { AuthService } from "../../services/auth/auth.service";
+import { NavController } from "@ionic/angular";
 
 @Component({
   selector: 'app-offers',
@@ -18,7 +18,7 @@ export class OffersPage implements OnInit {
   }
 
   addOffer() {
-    this.navController.navigateForward('/add');
+    this.navController.navigateForward('/offers/add');
   }
 
 }

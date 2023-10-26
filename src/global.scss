@@ -30,33 +30,13 @@
 @tailwind utilities;
 
 body {
-  background-color: white;
+  @apply bg-gray-900;  
 }
 
 .input {
   @apply bg-gray-200/50 border-0
 }
 
-ion-tab-bar {
-  position: relative;
-  width: 63%;
-  transform: translate(-50%, -35%);
-  left: 50%;
-  border-radius: 30px;
-  padding-bottom: 0;
-  border: 1px solid rgba(2, 52, 54, 0.08);
-  height: 55px;
-  overflow: hidden;
-  box-shadow: 0px -5px 10px rgba(3, 181, 170, 0.08);
-}
 
-ion-tab-button {
-  @apply bg-includo-sky border-0;
-}
-
-ion-toolbar {
-  --min-height: 65px;
-  --border-style: none;
-}
 
 .firebase-emulator-warning { display: none; }

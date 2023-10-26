@@ -7,11 +7,11 @@ import {
   GoogleAuthProvider,
   User, signInWithPopup, signOut, updateProfile
 } from "@angular/fire/auth";
-import {Router} from "@angular/router";
-import {Firestore} from "@angular/fire/firestore";
-import {LoadingController, ToastController} from "@ionic/angular";
-import {from, switchMap} from "rxjs";
-import {getDownloadURL, ref, Storage, uploadBytes} from "@angular/fire/storage";
+import { Router } from "@angular/router";
+import { Firestore } from "@angular/fire/firestore";
+import { LoadingController, ToastController } from "@ionic/angular";
+import { from, switchMap } from "rxjs";
+import { getDownloadURL, ref, Storage, uploadBytes } from "@angular/fire/storage";
 
 @Injectable({
   providedIn: 'root'
@@ -47,7 +47,7 @@ export class AuthService {
     signInWithEmailAndPassword(this.auth, credentials.email, credentials.password)
       .then(() => {
         loading.dismiss();
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/home');
       })
       .catch(async () => {
         await loading.dismiss();
@@ -65,14 +65,14 @@ export class AuthService {
   signUp(credentials: any) {
     createUserWithEmailAndPassword(this.auth, credentials.email, credentials.password)
       .then(() => {
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/home');
       });
   }
 
   signInWithGoogle() {
     signInWithPopup(this.auth, new GoogleAuthProvider())
       .then(() => {
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/home');
       })
   }
 
@@ -94,7 +94,7 @@ export class AuthService {
       .pipe(
         switchMap(async (photoURL) => {
           if (this.currentUser) {
-            await updateProfile(this.currentUser, {photoURL})
+            await updateProfile(this.currentUser, { photoURL })
           }
         })
       ).subscribe();

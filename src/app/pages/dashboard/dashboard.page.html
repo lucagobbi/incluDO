@@ -1,43 +1,104 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-button (click)="signOut()">
-        <ion-icon name="log-out-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>Dashboard</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="toggleChangeLang()">
-        <span [className]="'me-2 fi fi-'+selectedLanguage?.iso?.toLocaleLowerCase() + ' fis'"></span>
-        <i class="fa-solid fa-caret-down"></i>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<div class="flex flex-col gap-4">
+  <nav class="bg-white border-gray-200 dark:bg-gray-900">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a class="flex items-center">
+        <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" />
+        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">IncluDO</span>
+      </a>
+      <div class="flex items-center md:order-2">
+        <button type="button"
+          class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+          id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
+          data-dropdown-placement="bottom">
+          <span class="sr-only">Open user menu</span>
+          <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
+        </button>
+        <div
+          class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+          id="user-dropdown">
+          <div class="px-4 py-3">
+            <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
+            <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+          </div>
 
-<ion-content class="ion-padding" [fullscreen]="true">
-
-<div class="flex flex-col items-center">
-  <div class="flex justify-between">
-    <div class="pt-8 pl-4">
-      <p class="text-lg">Bentornato Gino</p>
-    </div>
-    <div class="p-4">
-      <div class="avatar" (click)="goToProfile()">
-        <div class="w-24 rounded-full">
-          <img src="assets/icons/icon-96x96.png" />
         </div>
+        <button data-collapse-toggle="navbar-user" type="button"
+          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          aria-controls="navbar-user" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M1 1h15M1 7h15M1 13h15" />
+          </svg>
+        </button>
+      </div>
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
+        <ul
+          class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <li>
+            <a routerLink="/cv"
+              class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+              aria-current="page">Profilo</a>
+          </li>
+          <li>
+            <a routerLink="/offers"
+              class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Annunci</a>
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
+  </nav>
 
-  <div class="flex justify-between items-center w-11/12 rounded-md bg-gray-200 p-4">
 
-    <p>Completamento profilo</p>
+  <section class="bg-white dark:bg-gray-900">
+    <div class="py-2 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+      <div class="max-w-screen-md">
+        <h2 class="mb-4 text-3xl tracking-tight font-extrabold text-gray-900 dark:text-white">Annunci recenti</h2>
+        <div
+          class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <a href="#">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology
+              acquisitions 2021</h5>
+          </a>
+          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology
+            acquisitions of 2021 so far, in reverse chronological order.</p>
+          <a href="#"
+            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+              viewBox="0 0 14 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M1 5h12m0 0L9 1m4 4L9 9" />
+            </svg>
+          </a>
+        </div>
 
-    <div class="radial-progress" style="--value:70;">70%</div>
+      </div>
+    </div>
 
-  </div>
+    <div class="py-2 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+      <div class="max-w-screen-md">
+        <h2 class="mb-4 text-3xl tracking-tight font-extrabold text-gray-900 dark:text-white">Candidature</h2>
+        <div
+          class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <a href="#">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology
+              acquisitions 2021</h5>
+          </a>
+          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology
+            acquisitions of 2021 so far, in reverse chronological order.</p>
+          <a href="#"
+            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+              viewBox="0 0 14 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M1 5h12m0 0L9 1m4 4L9 9" />
+            </svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
 </div>
-
-</ion-content>
