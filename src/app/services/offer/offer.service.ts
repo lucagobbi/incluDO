@@ -8,10 +8,15 @@ import {
   doc,
   docData,
   addDoc,
+  collectionData,
+  orderBy,
+  limit,
+  getDoc,
+  getDocs,
 } from "@angular/fire/firestore";
-import {AuthService} from "../auth/auth.service";
-import {Offer} from "../../models/Offer";
-import {Observable} from "rxjs";
+import { AuthService } from "../auth/auth.service";
+import { Offer } from "../../models/Offer";
+import { Observable, map } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +35,21 @@ export class OfferService {
     return snapshot.data().count;
   }
 
+  getAll(): Observable<Offer[]> {
+    const offersRef = collection(this.db, 'offers');
+    return collectionData(offersRef, { idField: 'id' }).pipe(map(offers => <Offer[]>offers));
+  }
+
+  async getLatests(): Promise<Offer[]> {
+    const latestOffers: Offer[] = [];
+    const offersRef = collection(this.db, 'offers');
+    const q = query(offersRef, orderBy('creationDate', 'desc'), limit(3));
+    getDocs(q).then(snapshot => {
+      latestOffers.push(...snapshot.docs.map(doc => <Offer>doc.data()));
+    });
+    return latestOffers;
+  }
+
   createOffer(offer: Offer) {
     const offersRef = collection(this.db, 'offers');
     return addDoc(offersRef, {
@@ -40,7 +60,7 @@ export class OfferService {
 
   getOfferById(offerId: string | null): Observable<Offer> {
     const offerRef = doc(this.db, `offers/${offerId}`);
-    return <Observable<Offer>>docData(offerRef, {idField: 'id'});
+    return <Observable<Offer>>docData(offerRef, { idField: 'id' });
   }
 
   apply(offerId: string, application: any) {

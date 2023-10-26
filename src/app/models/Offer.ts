@@ -1,8 +1,9 @@
-import {Company} from "./Company";
+import { Company } from "./Company";
 
 export interface Offer {
   title: string,
   description: string,
   skills: string[],
-  company: Company
+  company: Company,
+  creationDate: number
 }

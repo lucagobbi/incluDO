@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {NavController} from "@ionic/angular";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ToastService, ToastType} from "../../../services/toast/toast.service";
-import {OfferService} from "../../../services/offer/offer.service";
-import {Offer} from "../../../models/Offer";
-import {fadeInRegular, zoomInFast, zoomInRegular} from "../../../animations/animations";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from "@angular/router";
+import { NavController } from "@ionic/angular";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ToastService, ToastType } from "../../../services/toast/toast.service";
+import { OfferService } from "../../../services/offer/offer.service";
+import { Offer } from "../../../models/Offer";
+import { fadeInRegular, zoomInFast, zoomInRegular } from "../../../animations/animations";
 
 @Component({
   selector: 'app-add',
@@ -60,7 +60,7 @@ export class AddPage implements OnInit {
   }
 
   addSkill() {
-    this.skills.push({skill: this.form.get('skill')?.value, selected: false});
+    this.skills.push({ skill: this.form.get('skill')?.value, selected: false });
     this.form.get('skill')?.reset();
   }
 
@@ -82,7 +82,8 @@ export class AddPage implements OnInit {
         address: this.form.get('companyAddress')?.value,
         phone: this.form.get('companyPhone')?.value,
         email: this.form.get('companyEmail')?.value,
-      }
+      },
+      creationDate: Date.now()
     };
     this.offerService.createOffer(offer).then(async () => {
       this.toastService.showToast('Offerta creata con successo!', ToastType.success)
